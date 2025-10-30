@@ -1,0 +1,27 @@
+# Eclipse / IntelliJ / VSCode
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.vscode/
+
+# Java / Build
+bin/
+out/
+target/
+*.class
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# JavaFX SDK (do not commit SDKs)
+javafx-sdk*/
+openjfx*/
+
+# Gradle/Maven (if you ever add them later)
+.gradle/
+build/
+.mvn/
