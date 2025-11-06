@@ -7,26 +7,30 @@ import javafx.stage.Stage;
 
 /**
  * @author Alex
- * @since 2025-10-29
- * @purpose Assembles the BorderPane-based layout for the Week-8 lab: Top HBox
- *          (image/title), Bottom HBox (today's date), Left/Right labeled panes,
- *          and the Center EmploymentForm GridPane.
+ * @since 2025-11-05
+ * @purpose Assembles the BorderPane for Lab 5: Top = HBox (image + label),
+ *          Bottom = HBox (today's date), Left/Right = labeled panes, Center =
+ *          Employment form GridPane.
  */
 public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		BorderPane root = new BorderPane();
+		BorderPane pane = new BorderPane();
 
-		root.setTop(new CustomHorizonalTop("Top"));
-		root.setBottom(new CustomHorizontalBottom());
+		// Top/Bottom per lab spec (HBoxes)
+		pane.setTop(new CustomHorizonalTop("Top"));
+		pane.setBottom(new CustomHorizontalBottom());
 
-		root.setLeft(new CustomPane("Left"));
-		root.setRight(new CustomPane("Right"));
+		// Left/Right keep the prof's simple red-bordered panes
+		pane.setLeft(new CustomPane("Left"));
+		pane.setRight(new CustomPane("Right"));
 
-		root.setCenter(new EmploymentForm());
+		// Center = employment application form
+		pane.setCenter(new EmploymentForm());
 
-		Scene scene = new Scene(root, 800, 600);
+		// Scene & Stage
+		Scene scene = new Scene(pane);
 		primaryStage.setTitle("ShowBorderPane");
 		primaryStage.setScene(scene);
 		primaryStage.show();
