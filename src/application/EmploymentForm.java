@@ -13,36 +13,24 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
-/**
- * @author Alex Kachur
- * @since 2025-11-05
- * @purpose Center region for the BorderPane. Builds the Employment Application
- *          form using a GridPane as shown in the lab screenshot. The Send
- *          button writes "Application Sent" to the console.
- */
 public class EmploymentForm extends GridPane {
 
-	/** Build the form UI using plain JavaFX controls. */
 	public EmploymentForm() {
-		// GridPane basics
 		setAlignment(Pos.TOP_LEFT);
 		setPadding(new Insets(12));
 		setHgap(8);
 		setVgap(8);
 		setStyle("-fx-border-color: red");
 
-		// Two columns: label + input (input column grows with window width)
 		ColumnConstraints cLabel = new ColumnConstraints();
 		ColumnConstraints cInput = new ColumnConstraints();
 		cInput.setHgrow(Priority.ALWAYS);
 		getColumnConstraints().addAll(cLabel, cInput);
 
-		// Title (matches screenshot intent)
 		Label title = new Label("Employment Application Form Example");
 		title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 		add(title, 0, 0, 2, 1);
 
-		// First/Last name
 		TextField tfFirst = new TextField();
 		TextField tfLast = new TextField();
 		add(new Label("First name *"), 0, 1);
@@ -50,22 +38,18 @@ public class EmploymentForm extends GridPane {
 		add(new Label("Last name *"), 0, 2);
 		add(tfLast, 1, 2);
 
-		// Email
 		TextField tfEmail = new TextField();
 		add(new Label("Email *"), 0, 3);
 		add(tfEmail, 1, 3);
 
-		// Portfolio website
 		TextField tfSite = new TextField("http://");
 		add(new Label("Portfolio website"), 0, 4);
 		add(tfSite, 1, 4);
 
-		// Position
 		TextField tfPosition = new TextField();
 		add(new Label("Position you are applying for *"), 0, 5);
 		add(tfPosition, 1, 5);
 
-		// Salary + Start (nested GridPane laid out side-by-side)
 		GridPane salaryRow = new GridPane();
 		salaryRow.setHgap(8);
 		TextField tfSalary = new TextField();
@@ -83,7 +67,6 @@ public class EmploymentForm extends GridPane {
 		salaryRow.getColumnConstraints().addAll(s0, s1, s2, s3);
 		add(salaryRow, 0, 6, 2, 1);
 
-		// Phone + Fax (nested GridPane)
 		GridPane phoneRow = new GridPane();
 		phoneRow.setHgap(8);
 		TextField tfPhone = new TextField();
@@ -101,7 +84,6 @@ public class EmploymentForm extends GridPane {
 		phoneRow.getColumnConstraints().addAll(p0, p1, p2, p3);
 		add(phoneRow, 0, 7, 2, 1);
 
-		// Relocation (ToggleGroup with three RadioButtons)
 		ToggleGroup relocate = new ToggleGroup();
 		RadioButton rbYes = new RadioButton("Yes");
 		RadioButton rbNo = new RadioButton("No");
@@ -110,7 +92,6 @@ public class EmploymentForm extends GridPane {
 		rbNo.setToggleGroup(relocate);
 		rbNs.setToggleGroup(relocate);
 		rbYes.setSelected(true);
-
 		GridPane relRow = new GridPane();
 		relRow.setHgap(12);
 		relRow.add(new Label("Are you willing to relocate?"), 0, 0);
@@ -119,18 +100,15 @@ public class EmploymentForm extends GridPane {
 		relRow.add(rbNs, 3, 0);
 		add(relRow, 0, 8, 2, 1);
 
-		// Last company
 		TextField tfCompany = new TextField();
 		add(new Label("Last company you worked for"), 0, 9);
 		add(tfCompany, 1, 9);
 
-		// Comments
 		TextArea taNotes = new TextArea();
 		taNotes.setPrefRowCount(5);
 		add(new Label("Reference / Comments / Questions"), 0, 10);
 		add(taNotes, 1, 10);
 
-		// Send button (prints to Console per lab spec)
 		Button btnSend = new Button("Send Application");
 		btnSend.setOnAction(e -> System.out.println("Application Sent"));
 		add(btnSend, 0, 11);

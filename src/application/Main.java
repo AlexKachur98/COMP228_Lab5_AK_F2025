@@ -1,39 +1,33 @@
 package application;
 
 import javafx.application.Application;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.HBox;
 
-/**
- * @author Alex
- * @since 2025-11-05
- * @purpose Assembles the BorderPane for Lab 5: Top = HBox (image + label),
- *          Bottom = HBox (today's date), Left/Right = labeled panes, Center =
- *          Employment form GridPane.
- */
 public class Main extends Application {
-
 	@Override
 	public void start(Stage primaryStage) {
+
 		BorderPane pane = new BorderPane();
-
-		// Top/Bottom per lab spec (HBoxes)
+		// Place nodes in the pane
 		pane.setTop(new CustomHorizonalTop("Top"));
-		pane.setBottom(new CustomHorizontalBottom());
 
-		// Left/Right keep the prof's simple red-bordered panes
-		pane.setLeft(new CustomPane("Left"));
 		pane.setRight(new CustomPane("Right"));
-
-		// Center = employment application form
+		pane.setBottom(new CustomHorizontalBottom());
+		pane.setLeft(new CustomPane("Left"));
 		pane.setCenter(new EmploymentForm());
+		/*
+		 * pane.setCenter(Embed the code for the Gridpane - employment form. );
+		 */
 
-		// Scene & Stage
+		// Create a scene and place it in the stage
 		Scene scene = new Scene(pane);
-		primaryStage.setTitle("ShowBorderPane");
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		primaryStage.setTitle("ShowBorderPane"); // Set the stage title
+		primaryStage.setScene(scene); // Place the scene in the stage
+		primaryStage.show(); // Display the stage
+
 	}
 
 	public static void main(String[] args) {
